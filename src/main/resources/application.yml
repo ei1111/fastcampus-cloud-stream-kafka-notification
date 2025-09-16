@@ -1,0 +1,9 @@
+#event.yml 파일지정 내용 포함시킴
+spring:
+  application:
+    name: notification-consumer
+  profiles:
+    active: local
+    include: event
+server:
+  port: 8082

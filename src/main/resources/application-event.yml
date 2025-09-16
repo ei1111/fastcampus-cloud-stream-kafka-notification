@@ -1,0 +1,23 @@
+spring:
+  cloud:
+    function:
+      definition: comment; like; follow;
+    stream:
+      binder:
+        brokers: localhost:9092
+      bindings:
+        comment-in-0: # 채널이름
+          destination: comment
+          content-type: application/json
+          group: notification-consumer
+          consumer.max-attempts: 2 # 메시지를 처리할 때 최대 몇 번 실행할지 실패시 deadletter큐로 이동
+        like-in-0:
+          destination: like
+          content-type: application/json
+          group: notification-consumer
+          consumer.max-attempts: 2
+        follow-in-0:
+          destination: follow
+          content-type: application/json
+          group: notification-consumer
+          consumer.max-attempts: 2
