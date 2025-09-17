@@ -9,10 +9,10 @@ import lombok.Data;
 public class LikeEvent {
     //이벤트 종류 구별(생성,추가)
     private LikeEventType type;
-    //어떤 게시글에 댓글 달렸는지
+    //어떤 게시글에 좋아요가 달렸는지?
     private Long postId;
-    //누가 댓글 달았는지
+    //누가 좋아요를 눌렀는지
     private Long userId;
-    //언제 좋아요를 눌렀는지?
+    //언제 좋아요 이벤트가 발생했는지
     private Instant createdAt;
 }

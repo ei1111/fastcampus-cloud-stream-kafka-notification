@@ -11,4 +11,7 @@ import org.springframework.stereotype.Repository;
 public interface NotificationRepository extends MongoRepository<Notification, String> {
     @Query("{'type': ?0, 'commentId':  ?1}")
     Optional<Notification> findByTypeAndCommentId(NotificationType notificationType, Long commentId);
+
+    @Query("{'type': ?0, 'postId':  ?1}")
+    Optional<Notification> findByTypeAndPostId(NotificationType notificationType, Long postId);
 }

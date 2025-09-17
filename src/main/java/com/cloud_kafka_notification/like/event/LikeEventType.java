@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum LikeEventType {
     ADD("추가"),
-    DELETE("삭제");
+    REMOVE("삭제");
 
 
     private final String desc;

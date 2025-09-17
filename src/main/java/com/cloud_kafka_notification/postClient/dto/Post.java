@@ -12,4 +12,7 @@ public class Post {
     private String imgUrl;
     private String content;
 
+    public boolean isSameUser(Long userId) {
+        return this.userId.equals(userId);
+    }
 }

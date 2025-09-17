@@ -7,26 +7,31 @@ import com.cloud_kafka_notification.commentClient.dto.CommentClient;
 import com.cloud_kafka_notification.global.util.NotificationIdGenerator;
 import com.cloud_kafka_notification.notification.event.Notification;
 import com.cloud_kafka_notification.notification.event.NotificationType;
-import com.cloud_kafka_notification.notification.service.NotificationService;
+import com.cloud_kafka_notification.notification.service.NotificationSaveService;
 import com.cloud_kafka_notification.postClient.dto.Post;
 import com.cloud_kafka_notification.postClient.dto.PostClient;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class CommnetAddTask {
     private final PostClient postClient;
     private final CommentClient commentClient;
-    private final NotificationService notificationService;
+    private final NotificationSaveService notificationSaveService;
 
     public void processEvent(CommentEvent event) {
         //내가 내 게시물에 댓글을 달면 알림은 무시.
         Post post = postClient.getPost(event.getPostId());
+        log.info("postId : {}",  post.getId());
+        log.info("userId : {}",  event.getUserId());
 
         if (event.isSameUser(post)) {
+            log.info("종료");
             return;
         }
 
@@ -36,7 +41,7 @@ public class CommnetAddTask {
         Notification notification = createNotification(post, comment);
 
         //저장
-        notificationService.save(notification);
+        notificationSaveService.save(notification);
     }
 
     //댓글 알림을 생성하는 함수

@@ -28,7 +28,7 @@ public class CommentRemoveTask {
             return;
         }
         //알림을 지우는 로직
-        getService.getNotification(NotificationType.COMMENT, event.getCommentId())
+        getService.getNotificationByTypeAndCommentId(NotificationType.COMMENT, event.getCommentId())
                 //값이 있을경우 삭제, 값이 없으면 로그 남기기
                 .ifPresentOrElse(
                         notification -> removeService.deleteById(notification.getId()),
