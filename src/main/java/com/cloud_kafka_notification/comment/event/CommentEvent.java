@@ -1,5 +1,7 @@
 package com.cloud_kafka_notification.comment.event;
 
+import com.cloud_kafka_notification.postClient.dto.Post;
+import java.util.Objects;
 import lombok.Data;
 
 //댓글 관련 처리
@@ -14,4 +16,9 @@ public class CommentEvent {
     private Long userId;
     //댓글은 뭔지(댓글 내용이 변경될수 있어서 관련 내용은 만들지 않음)
     private Long commentId;
+
+
+    public boolean isSameUser(Post post){
+        return Objects.equals(userId, post.getUserId());
+    }
 }

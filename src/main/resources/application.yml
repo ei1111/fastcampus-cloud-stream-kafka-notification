@@ -5,5 +5,8 @@ spring:
   profiles:
     active: local
     include: event
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/kafka-web
 server:
   port: 8082

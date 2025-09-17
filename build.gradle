@@ -23,6 +23,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
+    /*data-mongoDB*/
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 
     /*lombok*/
     compileOnly 'org.projectlombok:lombok'
@@ -30,6 +32,11 @@ dependencies {
 
     /*kafka*/
     implementation 'org.springframework.cloud:spring-cloud-starter-stream-kafka:4.3.0'
+
+    /*API 문서 생성(Swagger)*/
+    implementation 'org.springdoc:springdoc-openapi-starter-common:2.8.13'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.13'
+
 
     /*test*/
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
