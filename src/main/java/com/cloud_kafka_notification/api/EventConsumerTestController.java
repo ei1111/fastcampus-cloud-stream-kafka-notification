@@ -1,6 +1,7 @@
 package com.cloud_kafka_notification.api;
 
 import com.cloud_kafka_notification.comment.event.CommentEvent;
+import com.cloud_kafka_notification.follow.event.FollowEvent;
 import com.cloud_kafka_notification.like.event.LikeEvent;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class EventConsumerTestController {
     private final Consumer<CommentEvent> comment;
     private final Consumer<LikeEvent> like;
+    private final Consumer<FollowEvent> follow;
 
 
     @PostMapping("/test/comment")
@@ -28,5 +30,11 @@ public class EventConsumerTestController {
     @Operation(summary = "like 저장 및 삭제")
     public void comment(@RequestBody LikeEvent event){
         like.accept(event);
+    }
+
+    @PostMapping("/test/follow")
+    @Operation(summary = "follow 저장 및 삭제")
+    public void comment(@RequestBody FollowEvent event){
+        follow.accept(event);
     }
 }

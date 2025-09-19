@@ -7,7 +7,6 @@ import com.cloud_kafka_notification.notification.event.NotificationType;
 import java.time.Instant;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.TypeAlias;
 
 @Getter
@@ -27,7 +26,7 @@ public class FollowNotification extends Notification {
     public static FollowNotification from(FollowEvent  followEvent) {
         return FollowNotification.builder()
                 .id( NotificationIdGenerator.generate())
-                .userId(followEvent.getUserId())
+                .userId(followEvent.getTargetUserId())
                 .type(NotificationType.FOLLOW)
                 .occurredAt(followEvent.getCreatedAt())
                 .createdAt(InstantDateTime.now())
