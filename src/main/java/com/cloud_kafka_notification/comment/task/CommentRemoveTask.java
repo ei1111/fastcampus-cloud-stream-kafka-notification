@@ -29,10 +29,7 @@ public class CommentRemoveTask {
         }
         //알림을 지우는 로직
         getService.getNotificationByTypeAndCommentId(NotificationType.COMMENT, event.getCommentId())
-                //값이 있을경우 삭제, 값이 없으면 로그 남기기
-                .ifPresentOrElse(
-                        notification -> removeService.deleteById(notification.getId()),
-                        () -> log.error("notificaiton not found")
-                );
+                //값이 있을경우 삭제, 값이 없으면 90일에 삭제되니 놔두기
+                .ifPresent(notification -> removeService.deleteById(notification.getId()));
     }
 }
