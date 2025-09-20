@@ -13,4 +13,8 @@ public class InstantDateTime {
     public static Instant deleteDateTime() {
         return Instant.now().plus(90, ChronoUnit.DAYS);
     }
+
+    public static long lastReadAt() {
+        return Instant.now().toEpochMilli();
+    }
 }
