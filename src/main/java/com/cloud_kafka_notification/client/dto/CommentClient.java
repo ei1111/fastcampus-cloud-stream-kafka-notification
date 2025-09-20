@@ -1,6 +1,5 @@
-package com.cloud_kafka_notification.commentClient.dto;
+package com.cloud_kafka_notification.client.dto;
 
-import com.cloud_kafka_notification.postClient.dto.Post;
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;

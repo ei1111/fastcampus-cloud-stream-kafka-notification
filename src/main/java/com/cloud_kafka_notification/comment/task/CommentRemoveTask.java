@@ -1,7 +1,6 @@
 package com.cloud_kafka_notification.comment.task;
 
 import com.cloud_kafka_notification.comment.event.CommentEvent;
-import com.cloud_kafka_notification.commentClient.dto.CommentClient;
 import com.cloud_kafka_notification.notification.event.NotificationType;
 import com.cloud_kafka_notification.notification.service.NotificationGetService;
 import com.cloud_kafka_notification.notification.service.NotificationRemoveService;

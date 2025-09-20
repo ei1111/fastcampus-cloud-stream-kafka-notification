@@ -1,4 +1,4 @@
-package com.cloud_kafka_notification.api;
+package com.cloud_kafka_notification.api.controller;
 
 import com.cloud_kafka_notification.comment.event.CommentEvent;
 import com.cloud_kafka_notification.follow.event.FollowEvent;
