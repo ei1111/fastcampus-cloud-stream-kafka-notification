@@ -3,6 +3,7 @@ package com.cloud_kafka_notification.notification.repository;
 import com.cloud_kafka_notification.notification.event.Notification;
 import com.cloud_kafka_notification.notification.event.NotificationType;
 import java.time.Instant;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
@@ -27,4 +28,6 @@ public interface NotificationRepository extends MongoRepository<Notification, St
 
     //occuredAt이 있는 경우
     Slice<Notification> findAllByUserIdAndOccurredAtLessThanOrderByOccurredAtDesc(Long userId, Instant occuredAt, Pageable pageable);
+
+    Optional<Notification> findFirstByUserIdOrderByLastUpdateAtDesc(Long userId);
 }

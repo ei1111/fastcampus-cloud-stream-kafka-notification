@@ -3,6 +3,7 @@ package com.cloud_kafka_notification.notification.service;
 import com.cloud_kafka_notification.notification.event.Notification;
 import com.cloud_kafka_notification.notification.event.NotificationType;
 import com.cloud_kafka_notification.notification.repository.NotificationRepository;
+import java.time.Instant;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,11 @@ public class NotificationGetService {
 
     public Optional<Notification> getNotificationByTypeAndUserIdAndFollowerId(NotificationType notificationType, Long userId, Long followerId) {
         return notificationRepository.findByTypeAndUserIdAndFollowerId(notificationType, userId, followerId);
+    }
+
+    public Instant getLatestUpdatedAt(long userId) {
+        return notificationRepository.findFirstByUserIdOrderByLastUpdateAtDesc(userId)
+                .map(notification -> notification.getLastUpdateAt())
+                .orElse(null);
     }
 }
